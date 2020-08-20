@@ -127,7 +127,7 @@ class Environment:
         }
         self.DC_eff = 0.96
         self.power_aux = self.get_aux_power()
-        self.degradation_EF = 0
+        self.degradation_EF = 2.62   # [g/uv]
 
     def reset(self):
         self.step_num = 0
@@ -336,8 +336,8 @@ class Environment:
         degradation_loadChange = 0
         if action == idling_current:
             degradation_idling = self.degradation_comp["idling_current_factor"] / 3600  # [uv]
-        if action > 0.75:
-            degradation_high_current = self.degradation_comp["high_power_factor"] / 3600 # [uv]
+        if action > current_high_criterion:
+            degradation_high_current = self.degradation_comp["high_power_factor"] / 3600  # [uv]
         if action != action_prev:
             degradation_loadChange = self.degradation_comp["load_change_factor"]
 

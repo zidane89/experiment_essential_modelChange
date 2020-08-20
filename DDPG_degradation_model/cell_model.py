@@ -26,7 +26,7 @@ class CellModel:
             "cathode_thickness": 350,  # um
             "gas_constant": 8.314,  # J/mol*K
             "Faraday_constant": 96485,  # C/mol
-            "limiting_current_density": 2.5  # A/cm2
+            "limiting_current_density": 3.0  # A/cm2
         }
 
     def conductivity_integrand(self, x, a, b, c):
@@ -158,15 +158,15 @@ class CellModel:
         return real_voltage
 
 
-fuel_cell = CellModel()
-# print(fuel_cell.get_loss(0.5))
-currents = np.linspace(0.005, 2.4999, 100)
-voltages = []
-powers = []
-for cur in currents:
-    voltage = fuel_cell.get_voltage(cur)
-    voltages.append(voltage)
-    powers.append(voltage * cur)
+# fuel_cell = CellModel()
+# # print(fuel_cell.get_loss(0.5))
+# currents = np.linspace(0.005, 2.4999, 100)
+# voltages = []
+# powers = []
+# for cur in currents:
+#     voltage = fuel_cell.get_voltage(cur)
+#     voltages.append(voltage)
+#     powers.append(voltage * cur)
 
 # plt.plot(currents, voltages, linewidth=2.0)
 # plt.plot(currents, powers)
